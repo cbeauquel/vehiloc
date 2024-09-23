@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Enum\GearBox;
 use App\Enum\PlacesNumber;
 use App\Repository\VoitureRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,20 +24,19 @@ class Voiture
     #[Assert\NotBlank]
     private ?string $name = null;
 
-    #[Assert\Length(min : 50)]
+    #[Assert\Length(min : 10)]
     #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
     private ?string $description = null;
 
     #[Assert\NotBlank]
-
     #[ORM\Column]
     private ?float $monthlyPrice = null;
 
     #[ORM\Column]
     private ?float $dailyPrice = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column]
     private ?GearBox $GearBox = null;
 
     #[ORM\Column]
@@ -100,7 +100,7 @@ class Voiture
         return $this->GearBox;
     }
 
-    public function setGearBox(GearBox $GearBox): static
+    public function setGearBox(?GearBox $GearBox): static
     {
         $this->GearBox = $GearBox;
 
