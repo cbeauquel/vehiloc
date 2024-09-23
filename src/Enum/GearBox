@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Enum;
+
+enum GearBox: int
+{
+    case Manual = 'Manual';
+    case Automatic = 'Automatic';
+
+    
+    public function getLabel(): string
+    {
+        return match ($this) {
+            self::Manual => 'Boite de vitesse manuelle',
+            self::Automatic => 'Boite de vitesse automatique',      
+        };
+    }
+}
