@@ -38,7 +38,7 @@ class VoituresController extends AbstractController
             $manager->persist($voiture);
             $manager->flush();
             
-            return $this->redirectToRoute('app_voitures_new');
+            return $this->redirectToRoute('app_voitures');
         }
 
         return $this->render('voitures/new.html.twig', [
